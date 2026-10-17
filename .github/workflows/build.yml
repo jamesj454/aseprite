@@ -1,5 +1,5 @@
 name: build
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -111,3 +111,8 @@ jobs:
         export ASEPRITE=$PWD/build/bin/aseprite
         cd tests
         $XVFB bash run-tests.sh
+    - name: Upload Finished Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: aseprite-${{ matrix.os }}-matrix.buildtype−m a t r i x point b u i l d sub t y p e minus𝑚𝑎𝑡𝑟𝑖𝑥.𝑏𝑢𝑖𝑙𝑑𝑡𝑦𝑝𝑒−{{ matrix.ui }}
+        path: build/bin/
